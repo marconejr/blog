@@ -4,6 +4,7 @@ app = Flask("hello")
 
 @app.route("/")
 @app.route("/hello")
+
 def hello():
     return "Hello Word"
 
