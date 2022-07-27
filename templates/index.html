@@ -1,11 +1,23 @@
-<html>
-    <head>
-        <title> Contatos </title>
-    </head>
-    <body>
-        <a href="http://oceanbrasil.com/"> isso é um link </a> 
-        <h1> Marcone Jr </h1>
-        <h2> marconejr2022@gmail.com </h2>
-        <h3> 81 988434503 </h3>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{%block title %} Página Inicial {% endblock %}
+
+{% block content %}
+{% for post in posts %}
+    <article class="post">
+        <header>
+            <div>
+                <h1>{{ post.title }}</h1>
+                <div class="about">
+                    by {{ post.author }} on {{ post.created.strftime('%d/%m/%Y') }}
+                </div>
+            </div>
+        </header>
+        <p class="body"> {{post.body}} </p>
+    </article>
+    {% if not loop.last %}
+        <hr>
+    {% endif %}    
+{% endfor %}
+{% endblock%}
+
